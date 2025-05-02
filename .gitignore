@@ -29,3 +29,6 @@ dialogflow_agent/*.zip
 # VSCode and IDE settings
 .vscode/
 .idea/
+
+
+!dialogflow_agent/UrbanBitesAgent.zip
