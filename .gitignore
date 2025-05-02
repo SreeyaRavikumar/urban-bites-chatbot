@@ -1,0 +1,31 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+*.env
+
+# Logs
+*.log
+backend/logs/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Dialogflow exports
+dialogflow_agent/*.zip
+
+# Jupyter and notebook stuff (if used)
+*.ipynb_checkpoints
+
+# VSCode and IDE settings
+.vscode/
+.idea/

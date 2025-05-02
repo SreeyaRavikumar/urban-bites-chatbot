@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Bites - Authentic Indian Street Food</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32; /* Forest green */
+            --secondary-color: #1b5e20; /* Darker green */
+            --accent-color: #aed581; /* Light green */
+            --text-color: #333;
+            --background-color: #f1f8e9; /* Very light green */
+            --card-color: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./images/home\ background.jpg') center/cover;
+            color: white;
+            text-align: center;
+            padding: 14rem 2rem;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-family: 'Brush Script MT', cursive;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        
+        .nav-logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: 'Brush Script MT', cursive;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .hero-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .hero-button:hover {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .menu-item {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-item-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
+        }
+        
+        .menu-item-info {
+            padding: 1.5rem;
+        }
+        
+        .menu-item-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .menu-item-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-item-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-item-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-item-button:hover {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+        
+        .testimonials {
+            background-color: var(--card-color);
+            padding: 4rem 0;
+            margin: 3rem 0;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial {
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .contact {
+            padding: 4rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info-item i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            background-color: #1b5e20; /* Darker green */
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-family: 'Brush Script MT', cursive;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #2e7d32;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-nav a {
+            color: #ddd;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            color: #b0bec5;
+        }
+        
+        /* Custom styling for Dialogflow Messenger */
+        df-messenger {
+            --df-messenger-button-border-radius: 50%;
+            --df-messenger-button-background-color: var(--primary-color);
+            --df-messenger-chat-border-radius: 20px;
+            --df-messenger-chat-background-color: var(--card-color);
+            --df-messenger-send-icon: var(--primary-color);
+            --df-messenger-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --df-messenger-bot-message: #e8f5e9; /* Light green for bot messages */
+            --df-messenger-user-message: #c8e6c9; /* Slightly darker green for user messages */
+            --df-messenger-button-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 8h1a4 4 0 0 1 0 8h-1'%3E%3C/path%3E%3Cpath d='M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z'%3E%3C/path%3E%3Cline x1='6' y1='1' x2='6' y2='4'%3E%3C/line%3E%3Cline x1='10' y1='1' x2='10' y2='4'%3E%3C/line%3E%3Cline x1='14' y1='1' x2='14' y2='4'%3E%3C/line%3E%3C/svg%3E");
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Styles for menu section buttons */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .menu-category {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .menu-category.active, .menu-category:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+    <!-- Add Dialogflow Messenger script -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Urban Bites</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="logo">Urban Bites</div>
+        <div class="tagline">Experience authentic Indian street food in the heart of the city</div>
+        <a href="#menu" class="hero-button">Explore Menu</a>
+    </header>
+
+    <section id="about" class="container">
+        <h2 class="section-title">Our Story</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="./images/in the kitchen indonesian food a hyper realistic.jpeg" alt="Urban Bites Restaurant">
+            </div>
+            <div class="about-text">
+                <p>Welcome to Urban Bites, where the vibrant flavors of Indian street food come alive in a cozy, homely atmosphere. Our journey began with a simple passion for authentic recipes passed down through generations.</p>
+                <p>Every dish at Urban Bites is crafted with love and traditional spices, bringing the bustling street food culture of India right to your table. We believe in preserving authenticity while creating a comfortable dining experience.</p>
+                <p>Our chefs have mastered the art of blending spices to create that perfect balance of flavors that will transport you straight to the streets of Mumbai, Delhi, and beyond. Come join us for a culinary adventure!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="container">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="menu-categories">
+            <button class="menu-category active" data-category="all">All</button>
+            <button class="menu-category" data-category="street-food">Street Food</button>
+            <button class="menu-category" data-category="main-course">Main Course</button>
+            <button class="menu-category" data-category="beverages">Beverages</button>
+        </div>
+        <div class="menu-container">
+            <div class="menu-item" data-category="street-food">
+                <div class="menu-item-image">
+                    <img src="./images/ChatGPT Image Apr 1, 2025, 06_46_18 PM.png" alt="Pav Bhaji">
+                </div>
+                <div class="menu-item-info">
+                    <h3 class="menu-item-title">Pav Bhaji</h3>
+                    <div class="menu-item-price">₹6</div>
+                    <p class="menu-item-desc">A flavorful blend of mashed vegetables in a rich tomato gravy, served with buttered pav (bread rolls).</p>
+                    <a href="#" class="menu-item-button">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="street-food">
+                <div class="menu-item-image">
+                    <img src="./images/SAMOSA INDIA.jpeg" alt="Samosa">
+                </div>
+                <div class="menu-item-info">
+                    <h3 class="menu-item-title">Samosa</h3>
+                    <div class="menu-item-price">₹5</div>
+                    <p class="menu-item-desc">Crispy pastry filled with spiced potatoes and peas, deep-fried to golden perfection.</p>
+                    <a href="#" class="menu-item-button">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="beverages">
+                <div class="menu-item-image">
+                    <img src="./images/Mango Lassi.jpeg" alt="Mango Lassi">
+                </div>
+                <div class="menu-item-info">
+                    <h3 class="menu-item-title">Mango Lassi</h3>
+                    <div class="menu-item-price">₹5</div>
+                    <p class="menu-item-desc">A sweet and refreshing yogurt-based drink blended with ripe mangoes and a hint of cardamom.</p>
+                    <a href="#" class="menu-item-button">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="main-course">
+                <div class="menu-item-image">
+                    <img src="./images/dosa.jpeg" alt="Masala Dosa">
+                </div>
+                <div class="menu-item-info">
+                    <h3 class="menu-item-title">Masala Dosa</h3>
+                    <div class="menu-item-price">₹6</div>
+                    <p class="menu-item-desc">Crispy fermented crepe filled with a spiced potato mixture, served with coconut chutney and sambar.</p>
+                    <a href="#" class="menu-item-button">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="main-course">
+                <div class="menu-item-image">
+                    <img src="./images/download (1).jpeg" alt="Rava Dosa">
+                </div>
+                <div class="menu-item-info">
+                    <h3 class="menu-item-title">Rava Dosa</h3>
+                    <div class="menu-item-price">₹7</div>
+                    <p class="menu-item-desc">A crispy, lacy crepe made from semolina, served with coconut chutney and tangy sambar.</p>
+                    <a href="#" class="menu-item-button">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="main-course">
+                <div class="menu-item-image">
+                    <img src="./images/Indisches Vegetable Biryani.jpeg" alt="Vegetable Biryani">
+                </div>
+                <div class="menu-item-info">
+                    <h3 class="menu-item-title">Vegetable Biryani</h3>
+                    <div class="menu-item-price">₹9</div>
+                    <p class="menu-item-desc">Fragrant basmati rice cooked with mixed vegetables and aromatic spices, served with raita.</p>
+                    <a href="#" class="menu-item-button">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="street-food">
+                <div class="menu-item-image">
+                    <img src="./images/istockphoto-1329212743-612x612.jpg" alt="Vada Pav">
+                </div>
+                <div class="menu-item-info">
+                    <h3 class="menu-item-title">Vada Pav</h3>
+                    <div class="menu-item-price">₹4</div>
+                    <p class="menu-item-desc">A spicy potato fritter sandwiched between pav (bread rolls), with tangy chutneys.</p>
+                    <a href="#" class="menu-item-button">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="main-course">
+                <div class="menu-item-image">
+                    <img src="./images/best chole bature.jpeg" alt="Chole Bhature">
+                </div>
+                <div class="menu-item-info">
+                    <h3 class="menu-item-title">Chole Bhature</h3>
+                    <div class="menu-item-price">₹7</div>
+                    <p class="menu-item-desc">Spicy chickpea curry served with fluffy, deep-fried bread, pickled onions and a lemon wedge.</p>
+                    <a href="#" class="menu-item-button">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="main-course">
+                <div class="menu-item-image">
+                    <img src="./images/Pizza on whitebackground.jpeg" alt="Pizza">
+                </div>
+                <div class="menu-item-info">
+                    <h3 class="menu-item-title">Indian Style Pizza</h3>
+                    <div class="menu-item-price">₹8</div>
+                    <p class="menu-item-desc">A fusion dish with a thin crust topped with spicy Indian toppings and melted cheese.</p>
+                    <a href="#" class="menu-item-button">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Urban Bites captures the authentic taste of Indian street food like nowhere else. Their Pav Bhaji reminds me of Mumbai streets!"</p>
+                    <p class="testimonial-author">- Rahul S.</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The cozy atmosphere combined with the vibrant flavors makes this my favorite spot for comfort food. The Masala Dosa is a must-try!"</p>
+                    <p class="testimonial-author">- Priya M.</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"I'm addicted to their Vada Pav and Mango Lassi. The perfect combination for a quick, satisfying meal that feels like home."</p>
+                    <p class="testimonial-author">- Aakash D.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <i>📍</i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>123 Urban Street, Foodie Lane, City - 400001</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i>📞</i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i>✉️</i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>hello@urbanbites.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i>🕒</i>
+                        <div>
+                            <h3>Hours</h3>
+                            <p>Monday - Sunday: 11:00 AM - 10:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Urban Bites</div>
+            <div class="social-links">
+                <a href="#"><i>f</i></a>
+                <a href="#"><i>t</i></a>
+                <a href="#"><i>in</i></a>
+                <a href="#"><i>ig</i></a>
+            </div>
+            <div class="footer-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#menu">Menu</a>
+                <a href="#contact">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Urban Bites. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dialogflow Messenger Chat Widget -->
+    <df-messenger
+        intent="WELCOME"
+        chat-title="Jennie"
+        agent-id="9993d355-832a-4a04-bea2-07f2d212480c"
+        language-code="en">
+    </df-messenger>
+
+    <script>
+        // Menu filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.menu-category');
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Get category value
+                    const category = button.getAttribute('data-category');
+                    
+                    // Filter menu items
+                    menuItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Form submission handling
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    form.reset();
+                });
+            }
+            
+            // Animation for menu items on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            menuItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
