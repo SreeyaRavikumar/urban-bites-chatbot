@@ -89,7 +89,7 @@ To run the chatbot locally:
 
 ## Credits
 
-* **[Varshini Chilakala](https://github.com/Varshinichilakala)**.
+* **[Varshini Chilakala](https://github.com/Varshini-chilakala)**.
 
 * **[Killi Sreeya Ravikumar](https://github.com/SreeyaRavikumar)**.
 
